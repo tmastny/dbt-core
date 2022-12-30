@@ -215,6 +215,7 @@ class NodeInfoMixin:
             "node_status": str(self._event_status.get("node_status")),
             "node_started_at": self._event_status.get("started_at"),
             "node_finished_at": self._event_status.get("finished_at"),
+            "meta": getattr(self, "meta", {}),
         }
         node_info_msg = NodeInfo(**node_info)
         return node_info_msg
