@@ -1,5 +1,5 @@
 import pytest
-from dbt.tests.util import run_dbt, get_manifest, read_file
+from dbt.tests.util import run_dbt, read_file
 import json
 
 model1 = "select 1 as fun"
