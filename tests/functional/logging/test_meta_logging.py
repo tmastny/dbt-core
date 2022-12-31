@@ -7,11 +7,15 @@ model2 = """
 {{ config(meta={"owners": ["team1", "team2"]})}}
 select 1 as fun
 """
+model3 = """
+{{ config(meta={1: "non-string-key"})}}
+select 1 as fun
+"""
 
 
 @pytest.fixture(scope="class")
 def models():
-    return {"model1.sql": model1, "model2.sql": model2}
+    return {"model1.sql": model1, "model2.sql": model2, "model3.sql": model3}
 
 
 # This test checks that various events contain node_info,
@@ -41,3 +45,5 @@ def test_meta(project, logs_dir):
             assert node_info['meta'] == {}
         elif node_path == "model2.sql":
             assert node_info['meta'] == {"owners": ["team1", "team2"]}
+        elif node_path == "model3.sql":
+            assert node_info["meta"] == {1: "non-string-key"}
