@@ -80,7 +80,7 @@ def test_exception_events():
 
 
 def test_node_info_events():
-    meta_dict = {"string-key": ["value1", 2], "nested-key": {"key2": "value2"}, 1: "value-from-non-string-key"}
+    meta_dict = {"string-key1": ["value1", 2], "string-key2": {"nested-dict-key": "value2"}, 1: "value-from-non-string-key"}
     node_info = {
         "node_path": "some_path",
         "node_name": "some_name",
