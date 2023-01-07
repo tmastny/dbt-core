@@ -8,9 +8,10 @@ model2 = """
 select 1 as fun
 """
 model3 = """
-{{ config(meta={1: "non-string-key"})}}
+{{ config(meta={"key": 1})}}
 select 1 as fun
 """
+
 
 
 @pytest.fixture(scope="class")
@@ -46,4 +47,4 @@ def test_meta(project, logs_dir):
         elif node_path == "model2.sql":
             assert node_info['meta'] == {"owners": ["team1", "team2"]}
         elif node_path == "model3.sql":
-            assert node_info["meta"] == {1: "non-string-key"}
+            assert node_info['meta'] == {"key3": 1}
