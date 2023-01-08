@@ -2,19 +2,11 @@ import pytest
 from dbt.tests.util import run_dbt, read_file
 import json
 
-model1 = "select 1 as fun"
-model2 = """
-{{ config(meta={"owners": ["team1", "team2"]})}}
-select 1 as fun
-"""
-model3 = """
-{{ config(meta={"key": 1})}}
-select 1 as fun
-"""
+model1 = 'select 1 as fun'
+model2 = '{{ config(meta={"owners": ["team1", "team2"]})}} select 1 as fun'
+model3 = '{{ config(meta={"key": 1})}} select 1 as fun'
 
-
-
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="class")  # noqa
 def models():
     return {"model1.sql": model1, "model2.sql": model2, "model3.sql": model3}
 
